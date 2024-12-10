@@ -1,0 +1,54 @@
+{
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "Esta es una API básica creada con Go y Swagger para recibir Webhooks.",
+        "title": "Webhook API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/webhook": {
+            "post": {
+                "description": "Recibe datos de un webhook POST y los procesa",
+                "tags": [
+                    "Webhook"
+                ],
+                "summary": "Recibe un webhook con datos en formato JSON",
+                "parameters": [
+                    {
+                        "description": "Datos del Webhook",
+                        "name": "webhook",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Webhook recibido con éxito",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Error en el webhook",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

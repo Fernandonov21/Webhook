@@ -1,0 +1,36 @@
+basePath: /
+consumes:
+- application/json
+host: localhost:8080
+info:
+  contact: {}
+  description: Esta es una API básica creada con Go y Swagger para recibir Webhooks.
+  title: Webhook API
+  version: "1.0"
+paths:
+  /webhook:
+    post:
+      description: Recibe datos de un webhook POST y los procesa
+      parameters:
+      - description: Datos del Webhook
+        in: body
+        name: webhook
+        required: true
+        schema:
+          additionalProperties: true
+          type: object
+      responses:
+        "200":
+          description: Webhook recibido con éxito
+          schema:
+            type: string
+        "400":
+          description: Error en el webhook
+          schema:
+            type: string
+      summary: Recibe un webhook con datos en formato JSON
+      tags:
+      - Webhook
+produces:
+- application/json
+swagger: "2.0"
